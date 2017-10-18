@@ -30,22 +30,22 @@ cd "$slicer2"
 cp -r plugins /opt/uplynk
 wait
 
-#Gets Sinh's Scripts to running Multiple Slicers
+#Fetches custom upstart scripts to run multiple LiveSlicers
 wget https://www.dropbox.com/s/glh1btud42b2hsv/uplynk_liveslicer.conf?dl=0
 wget https://www.dropbox.com/s/e1blyqkpkozoyid/uplynk.conf?dl=0
 mv uplynk_liveslicer.conf?dl=0 /etc/init/uplynk_liveslicer.conf
 mv uplynk.conf?dl=0 /etc/init/uplynk.conf
 
-#Makes Uplynk Directory and files for Sinh Scripts
+#Builds Uplynk directory and files for upstart scripts
 mkdir /etc/uplynk
 touch uplynk
 mv uplynk /etc/default
 
-#Gets Rid of Dash to Bash
+#Removes Dash to Bash
 mv /bin/sh sh.bak
 ln -s /bin/bash sh
 
-#Asks user for number of slicers they want to run must be a number
+#Prompts user for LiveSlicer quantity (must be a number)
 echo  "How many LiveSlicer instances do you want to install on this server? (i.e. 2)"
 read number_slicers
 echo "Name the LiveSlicer ids, each separated by a space. (max 10 inputs i.e. input1 input2 input3)"
@@ -56,7 +56,7 @@ echo NUM_INSTANCES=$number_slicers >> /etc/default/uplynk
 echo UPLYNK_CONF_DIR=/etc/uplynk >> /etc/default/uplynk
 printf "SLICER_IDS=('$slicer1' '$slicer2' '$slicer3' '$slicer4' '$slicer5' '$slicer6' '$slicer7' '$slicer8' '$slicer9' '$slicer10' )" >> /etc/default/uplynk
 
-#Creates configuration files based on names and moves to etc uplynk directory
+#Creates configuration files based on names and moves them to /etc/uplynk directory
 touch $slicer1.conf
 mv $slicer1.conf /etc/uplynk
 touch $slicer2.conf
