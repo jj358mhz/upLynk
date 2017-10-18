@@ -2,6 +2,15 @@
 
 wget=/usr/bin/wget
 tar=/bin/tar
+
+#Fetches the NVidida GPU drivers
+wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64-deb
+wait
+dpkg -i cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64-deb
+wait
+apt-get update && sudo apt-get install cuda cuda-drivers -y
+
+#Begins LiveSlicer install
 base_url='http://storage.uplynk.com/software/'
 if [ $(whoami) != 'root' ]; then
         echo "Must be root to run $0"
@@ -29,13 +38,6 @@ cd "$slicer2"
 #Copies the plugins folder to the correct location
 cp -r plugins /opt/uplynk
 wait
-
-#Fetches the NVidida GPU drivers
-wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64-deb
-wait
-dpkg -i cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64-deb
-wait
-apt-get update && sudo apt-get install cuda cuda-drivers -y
 
 #Fetches custom upstart scripts to run multiple LiveSlicers
 wget https://www.dropbox.com/s/glh1btud42b2hsv/uplynk_liveslicer.conf?dl=0
