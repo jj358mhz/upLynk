@@ -26,6 +26,8 @@ rm -f "$slicer"
 slicer2=uplynk_slicer_linux_64-$slicerversion-master
 cd "$slicer2"
 ./install_live
+#Copies the plugins folder to the correct location
+cp -r plugins /opt/uplynk
 wait
 
 #Gets Sinh's Scripts to running Multiple Slicers
