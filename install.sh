@@ -7,14 +7,14 @@ if [ $(whoami) != 'root' ]; then
         echo "Must be root to run $0"
         exit 1;
       fi
-echo "what Slicer Version do you want to use? i.e. 17071900"
+echo "What LiveSlicer version do you want to use? i.e. 17071900"
 read slicerversion
 slicer=uplynk_slicer_linux_64-$slicerversion-master.tbz2
 echo $slicer
 WGET=`wget -o wgetstatus "$base_url$slicer"`
 wgetstatus=`cat wgetstatus|awk '/HTTP/{print $6}'`
 if [ $wgetstatus != 200 ]; then
-  echo "Slicer Version Doesn't Exist"
+  echo "LiveSlicer version does not exist"
   exit;
 fi
 #else echo "Downloading Slicer"
@@ -46,9 +46,9 @@ mv /bin/sh sh.bak
 ln -s /bin/bash sh
 
 #Asks user for number of slicers they want to run must be a number
-echo  "How Many Slicers Do you want to run on this Server? i.e. 2"
+echo  "How many LiveSlicer instances do you want to install on this server? (i.e. 2)"
 read number_slicers
-echo "Name the slicer id seperate each by a space, max 10 inputs i.e. input1 input2 input3 "
+echo "Name the LiveSlicer ids, each separated by a space. (max 10 inputs i.e. input1 input2 input3)"
 read  slicer1 slicer2 slicer3 slicer4 slicer5 slicer6 slicer7 slicer8 slicer9 slicer10
 
 #Edits configuration for uplynk files
@@ -77,4 +77,4 @@ touch $slicer9.conf
 mv $slicer9.conf /etc/uplynk
 touch $slicer10.conf
 mv $slicer10.conf /etc/uplynk
-echo "Please Edit the Configuration files located in /etc/uplynk then start the slicer instance"
+echo "Please edit the configuration files located in /etc/uplynk, then start the LiveSlicer instance"
