@@ -39,14 +39,6 @@ cd "$slicer2"
 cp -r plugins /opt/uplynk
 wait
 
-#SCTE plugin installation
-wget https://drive.google.com/open?id=0B6dpbVU-sTRaQ2V0eE1POENzWWM #FX
-wget https://drive.google.com/open?id=0B6dpbVU-sTRaWDJ6U3R1NzVQRVU #NATGEO
-mv fx_scte_fox_20170301-1300.py /opt/uplynk/plugins/fx_scte_fox_20170301-1300.py
-mv natgeo-scte_fox_20170320-1800.py /opt/uplynk/plugins/natgeo-scte_fox_20170320-1800.py
-ln -s fx_scte_fox_20170301-1300.py scte1.py
-ln -s natgeo-scte_fox_20170320-1800.py scte2.py
-
 #Fetches custom upstart scripts to run multiple LiveSlicers
 wget https://www.dropbox.com/s/glh1btud42b2hsv/uplynk_liveslicer.conf?dl=0
 wget https://www.dropbox.com/s/e1blyqkpkozoyid/uplynk.conf?dl=0
