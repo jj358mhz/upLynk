@@ -105,28 +105,28 @@ mv $plugin1.py /opt/uplynk/plugins
 ln -s $plugin1.py scte1.py
 touch $plugin2.py
 mv $plugin2.py /opt/uplynk/plugins
-ln -s $plugin2.py scte1.py
+ln -s $plugin2.py scte2.py
 touch $plugin3.py
 mv $plugin3.py /opt/uplynk/plugins
-ln -s $plugin3.py scte1.py
+ln -s $plugin3.py scte3.py
 touch $plugin4.py
 mv $plugin4.py /opt/uplynk/plugins
-ln -s $plugin4.py scte1.py
+ln -s $plugin4.py scte4.py
 touch $plugin5.py
 mv $plugin5.py /opt/uplynk/plugins
-ln -s $plugin5.py scte1.py
+ln -s $plugin5.py scte5.py
 touch $plugin6.py
 mv $plugin6.py /opt/uplynk/plugins
-ln -s $plugin6.py scte1.py
+ln -s $plugin6.py scte6.py
 touch $plugin7.py
 mv $plugin7.py /opt/uplynk/plugins
-ln -s $plugin7.py scte1.py
+ln -s $plugin7.py scte7.py
 touch $plugin8.py
 mv $plugin8.py /opt/uplynk/plugins
-ln -s $plugin8.py scte1.py
+ln -s $plugin8.py scte8.py
 touch $plugin9.py
 mv $plugin9.py /opt/uplynk/plugins
-ln -s $plugin9.py scte1.py
+ln -s $plugin9.py scte9.py
 touch $plugin10.py
 mv $plugin10.py /opt/uplynk/plugins
-ln -s $plugin10.py scte1.py
+ln -s $plugin10.py scte10.py
