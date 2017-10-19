@@ -39,14 +39,6 @@ cd "$slicer2"
 cp -r plugins /opt/uplynk
 wait
 
-#SCTE plugin installation
-wget https://drive.google.com/open?id=0B6dpbVU-sTRaQ2V0eE1POENzWWM #FX
-wget https://drive.google.com/open?id=0B6dpbVU-sTRaWDJ6U3R1NzVQRVU #NATGEO
-mv fx_scte_fox_20170301-1300.py /opt/uplynk/plugins/fx_scte_fox_20170301-1300.py
-mv natgeo-scte_fox_20170320-1800.py /opt/uplynk/plugins/natgeo-scte_fox_20170320-1800.py
-ln -s fx_scte_fox_20170301-1300.py scte1.py
-ln -s natgeo-scte_fox_20170320-1800.py scte2.py
-
 #Fetches custom upstart scripts to run multiple LiveSlicers
 wget https://www.dropbox.com/s/glh1btud42b2hsv/uplynk_liveslicer.conf?dl=0
 wget https://www.dropbox.com/s/e1blyqkpkozoyid/uplynk.conf?dl=0
@@ -63,7 +55,7 @@ mv /bin/sh sh.bak
 ln -s /bin/bash sh
 
 #Prompts user for LiveSlicer quantity (must be a number)
-echo  "How many LiveSlicer instances do you want to install on this server? (i.e. 2)"
+echo  "How many LiveSlicer instances would you like to install on this server? (i.e. 2)"
 read number_slicers
 echo "Name the LiveSlicer ids, each separated by a space. (max 10 inputs i.e. input1 input2 input3)"
 read  slicer1 slicer2 slicer3 slicer4 slicer5 slicer6 slicer7 slicer8 slicer9 slicer10
@@ -95,3 +87,46 @@ mv $slicer9.conf /etc/uplynk
 touch $slicer10.conf
 mv $slicer10.conf /etc/uplynk
 echo "Please edit the configuration files located in /etc/uplynk, then start the LiveSlicer instance"
+
+#SCTE plugin installation
+echo "How many SCTE plugins would you like to install on this server? (i.e. 2)"
+read number_plugins
+echo "Name the SCTE plugins, each separated by a space. (max 10 inputs i.e. natgeo-scte_fox_20170320-1800 fx-scte_fox_20170620-1800)"
+read plugin1 plugin2 plugin3 plugin4 plugin5 plugin6 plugin7 plugin8 plugin9 plugin10
+
+#Edits configuration for SCTE files
+echo NUM_INSTANCES=$number_plugins >> /etc/default/uplynkplugins
+echo UPLYNK_PLUGIN_DIR=/opt/uplynk/plugins >> /etc/default/uplynkplugins
+printf "PLUGIN_IDS=('$plugin1' '$plugin2' '$plugin3' '$plugin4' '$plugin5' '$plugin6' '$plugin7' '$plugin8' '$plugin9' '$plugin10' )" >> /etc/default/uplynkplugins
+
+#Creates SCTE files based on names and moves them to /opt/uplynk/plugins directory, then symlinks them
+touch $plugin1.py
+mv $plugin1.py /opt/uplynk/plugins
+ln -s $plugin1.py scte1.py
+touch $plugin2.py
+mv $plugin2.py /opt/uplynk/plugins
+ln -s $plugin2.py scte1.py
+touch $plugin3.py
+mv $plugin3.py /opt/uplynk/plugins
+ln -s $plugin3.py scte1.py
+touch $plugin4.py
+mv $plugin4.py /opt/uplynk/plugins
+ln -s $plugin4.py scte1.py
+touch $plugin5.py
+mv $plugin5.py /opt/uplynk/plugins
+ln -s $plugin5.py scte1.py
+touch $plugin6.py
+mv $plugin6.py /opt/uplynk/plugins
+ln -s $plugin6.py scte1.py
+touch $plugin7.py
+mv $plugin7.py /opt/uplynk/plugins
+ln -s $plugin7.py scte1.py
+touch $plugin8.py
+mv $plugin8.py /opt/uplynk/plugins
+ln -s $plugin8.py scte1.py
+touch $plugin9.py
+mv $plugin9.py /opt/uplynk/plugins
+ln -s $plugin9.py scte1.py
+touch $plugin10.py
+mv $plugin10.py /opt/uplynk/plugins
+ln -s $plugin10.py scte1.py
